@@ -1,31 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { tarjetasData } from '../../data/tarjetas';
 import { GestoPagoService } from '../ServiceConsumerAPI/gestopago/gesto-pago.service';
-import { recargaData } from '../../data/recargas';
-import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-recharges',
+  selector: 'app-giftcards',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, FormsModule],
-  templateUrl: './recharges.component.html',
-  styleUrl: './recharges.component.css'
+  templateUrl: './giftcards.component.html',
+  styleUrl: './giftcards.component.css'
 })
 
-export class RechargesComponent implements OnInit {
+export class GiftcardsComponent {
   checkoutForm: FormGroup;
 
-  recargas = recargaData; // Hacemos los datos accesibles al template
+  tarjetas = tarjetasData; // Hacemos los datos accesibles al template
 
   selectedCompania: string = '';
-  selectedPackage: string = '';
+  selectedTarjet: string = '';
 
   constructor(private fb: FormBuilder, private GestoPagoService: GestoPagoService, private toastr: ToastrService) {
     this.checkoutForm = this.fb.group({
       company: ['', Validators.required],
-      package: ['', Validators.required],
-      phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]] // 10-digit phone validation
+      tarjet: ['', Validators.required],
     });
   }
 
@@ -34,8 +33,8 @@ export class RechargesComponent implements OnInit {
       console.log('La compañía seleccionada ha cambiado a:', value);
       // Realiza acciones adicionales aquí cuando la compañía cambie
     });
-    this.checkoutForm.get('package')?.valueChanges.subscribe(value => {
-      console.log('El paquete seleccionada ha cambiado a:', value);
+    this.checkoutForm.get('tarjet')?.valueChanges.subscribe(value => {
+      console.log('La tarjeta seleccionada ha cambiado a:', value);
       // Realiza acciones adicionales aquí cuando la compañía cambie
     });
   }
@@ -45,16 +44,15 @@ export class RechargesComponent implements OnInit {
       var transactionData;
       let mensaje = '';
 
-      this.recargas.forEach(recarga => {
-        if (recarga.idServicio === this.selectedCompania && recarga.idProducto === this.selectedPackage) {
+      this.tarjetas.forEach(tarjeta => {
+        if (tarjeta.idServicio === this.selectedCompania && tarjeta.idProducto === this.selectedTarjet) {
           transactionData = {
-            idProducto: parseInt(recarga.idProducto, 10),
-            idServicio: parseInt(recarga.idServicio, 10),
-            telefono: this.checkoutForm.value.phone,
-            idCatTipoServicio: recarga.idCatTipoServicio,
-            tipoFront: recarga.tipoFront,
+            idProducto: parseInt(tarjeta.idProducto, 10),
+            idServicio: parseInt(tarjeta.idServicio, 10),
+            idCatTipoServicio: tarjeta.idCatTipoServicio,
+            tipoFront: tarjeta.tipoFront,
           };
-          mensaje = recarga.legend;
+          mensaje = tarjeta.legend;
         }
       });
 
@@ -64,7 +62,7 @@ export class RechargesComponent implements OnInit {
 
             if (response.data.MENSAJE.CODIGO === '01') {
               this.checkoutForm.reset(); 
-              this.toastr.success(mensaje, 'Reacarga realizada!');
+              this.toastr.success(mensaje, 'Tarjeta adquirida con Exito!');
             }
 
             switch (response.data.MENSAJE.CODIGO) {
@@ -81,7 +79,6 @@ export class RechargesComponent implements OnInit {
                 break;
             }
 
-
           } else {
             this.toastr.error('Numero o referencia incorrecto, por favor valida tus datos', 'Error!');
           }
@@ -89,7 +86,7 @@ export class RechargesComponent implements OnInit {
           return response; // Retorna la respuesta original
         },
         (error) => {
-          this.toastr.error('Recarga no aplicada, por favor valida tus datos', 'Error!');
+          this.toastr.error('Tarjeta no adquirida, por favor valida tus datos', 'Error!');
           console.error("Transaction error:", error);
         }
       );

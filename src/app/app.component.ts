@@ -17,7 +17,7 @@ import { ToastrModule } from 'ngx-toastr';
     RechargesComponent,
     ServicesComponent,
     HttpClientModule,
-    ToastrModule
+    ToastrModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

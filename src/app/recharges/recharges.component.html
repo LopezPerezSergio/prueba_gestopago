@@ -31,20 +31,22 @@
                                         <div class="col-md-6">
                                             <div class="tp-checkout-input">
                                                 <label>Compañia</label>
-                                                <select class="nice-select" [(ngModel)]="selectedCompania" formControlName="company">
-                                                    <option class="option selected" value="">Seleccione Compañía</option>
+                                                <select class="nice-select" [(ngModel)]="selectedCompania"
+                                                    formControlName="company">
+                                                    <option class="option selected" value="">Seleccione Compañía
+                                                    </option>
                                                     <option class="option" value="133">Telcel</option>
                                                     <option class="option" value="115">AT&T</option>
                                                     <option class="option" value="2284">ABIB</option>
                                                 </select>
                                             </div>
                                         </div>
-    
-    
+
                                         <div *ngIf="selectedCompania === '133'" class="col-md-6">
                                             <div class="tp-checkout-input">
                                                 <label>Paquete</label>
-                                                <select class="nice-select" [(ngModel)]="selectedPackage" formControlName="package">
+                                                <select class="nice-select" [(ngModel)]="selectedPackage"
+                                                    formControlName="package">
                                                     <option class="option selected" value="">Seleccione Paquete</option>
                                                     <option class="option" value="406">TELCEL Recarga $100</option>
                                                     <option class="option" value="407">TELCEL Recarga $150</option>
@@ -56,11 +58,12 @@
                                         <div *ngIf="selectedCompania === '115'" class="col-md-6">
                                             <div class="tp-checkout-input">
                                                 <label>Paquete</label>
-                                                <select class="nice-select" [(ngModel)]="selectedPackage" formControlName="package">
+                                                <select class="nice-select" [(ngModel)]="selectedPackage"
+                                                    formControlName="package">
                                                     <option class="option selected" value="">Seleccione Paquete</option>
-                                                    <option class="option" value="406">ATT Recarga $100</option>
-                                                    <option class="option" value="407">ATT Recarga $150</option>
-                                                    <option class="option" value="408">ATT Recarga $200</option>
+                                                    <option class="option" value="299">ATT Recarga $100</option>
+                                                    <option class="option" value="300">ATT Recarga $150</option>
+                                                    <option class="option" value="301">ATT Recarga $200</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -68,15 +71,16 @@
                                         <div *ngIf="selectedCompania === '2284'" class="col-md-6">
                                             <div class="tp-checkout-input">
                                                 <label>Paquete</label>
-                                                <select class="nice-select" [(ngModel)]="selectedPackage" formControlName="package">
+                                                <select class="nice-select" [(ngModel)]="selectedPackage"
+                                                    formControlName="package">
                                                     <option class="option selected" value="">Seleccione Paquete</option>
-                                                    <option class="option" value="406">ABIB Recarga $100</option>
-                                                    <option class="option" value="407">ABIB Recarga $150</option>
-                                                    <option class="option" value="408">ABIB Recarga $200</option>
+                                                    <option class="option" value="18105">$100 ABIB 100 15 DIAS</option>
+                                                    <option class="option" value="14314">$150 ABIB 150</option>
+                                                    <option class="option" value="18109">$200 ABIB 15GB ILIM 30D</option>
                                                 </select>
                                             </div>
                                         </div>
-    
+
                                         <div class="col-md-12">
                                             <div class="tp-checkout-input">
                                                 <label>Telefono <span>*</span></label>
@@ -89,20 +93,20 @@
                             </div>
                         </div>
                     </div>
-    
+
                     <div class="col-lg-5">
                         <!-- checkout place order -->
                         <div class="tp-checkout-place white-bg">
                             <h3 class="tp-checkout-place-title">Tu compra</h3>
-    
+
                             <div class="tp-order-info-list">
                                 <ul>
-    
+
                                     <!-- header -->
                                     <li class="tp-order-info-list-header">
                                         <h4>Product</h4>
                                     </li>
-    
+
                                     <!-- item list -->
                                     <li class="tp-order-info-list-desc">
                                         <p>RECARGA TELEFONICA</p>

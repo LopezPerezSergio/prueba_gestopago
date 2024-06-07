@@ -10,8 +10,8 @@ describe('RechargesComponent', () => {
     await TestBed.configureTestingModule({
       imports: [RechargesComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(RechargesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

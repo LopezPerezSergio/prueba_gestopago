@@ -1,0 +1,106 @@
+<!-- breadcrumb area start -->
+<section class="breadcrumb__area include-bg pt-95 pb-50" data-bg-color="#EFF1F5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xxl-12">
+                <div class="breadcrumb__content p-relative z-index-1">
+                    <h3 class="breadcrumb__title">Recargas</h3>
+                    <div class="breadcrumb__list">
+                        <span><a href="#">Home</a></span>
+                        <span>Recargas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb area end -->
+
+<!-- checkout area start -->
+<section class="tp-checkout-area pb-120" data-bg-color="#EFF1F5">
+    <div class="container">
+        <div class="row">
+            <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="tp-checkout-bill-area">
+                            <h3 class="tp-checkout-bill-title">Opciones de Compra</h3>
+                            <div class="tp-checkout-bill-form">
+                                <div class="tp-checkout-bill-inner">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="tp-checkout-input">
+                                                <label>Compañia</label>
+                                                <select class="nice-select" [(ngModel)]="selectedCompania"
+                                                    formControlName="company">
+                                                    <option class="option selected" value="">Seleccione Compañía
+                                                    </option>
+                                                    <option class="option" value="669">Google</option>
+                                                    <option class="option" value="178">Netflix</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div *ngIf="selectedCompania === '669'" class="col-md-6">
+                                            <div class="tp-checkout-input">
+                                                <label>Tarjetas</label>
+                                                <select class="nice-select" [(ngModel)]="selectedTarjet"
+                                                    formControlName="tarjet">
+                                                    <option class="option selected" value="">Seleccione tarjeta
+                                                    </option>
+                                                    <option class="option" value="5611">Google Play $100</option>
+                                                    <option class="option" value="7755">Google Play $200</option>
+                                                    <option class="option" value="7758">Google Play $300</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div *ngIf="selectedCompania === '178'" class="col-md-6">
+                                            <div class="tp-checkout-input">
+                                                <label>Tarjetas</label>
+                                                <select class="nice-select" [(ngModel)]="selectedTarjet"
+                                                    formControlName="tarjet">
+                                                    <option class="option selected" value="">Seleccione tarjeta
+                                                    </option>
+                                                    <option class="option" value="7030">Netflix $300</option>
+                                                    <option class="option" value="10331">Netflix $400</option>
+                                                    <option class="option" value="7459">Netflix $500</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <!-- checkout place order -->
+                        <div class="tp-checkout-place white-bg">
+                            <h3 class="tp-checkout-place-title">Tu compra</h3>
+
+                            <div class="tp-order-info-list">
+                                <ul>
+
+                                    <!-- header -->
+                                    <li class="tp-order-info-list-header">
+                                        <h4>Producto</h4>
+                                    </li>
+
+                                    <!-- item list -->
+                                    <li class="tp-order-info-list-desc">
+                                        <p>Tarjeta de Regalo</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tp-checkout-btn-wrapper">
+                                <button  class="tp-checkout-btn w-100">Realizar recarga</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- checkout area end -->
